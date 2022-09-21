@@ -36,3 +36,44 @@
     transform: rotate(360deg);
   }
 }
+
+.menu {
+  display: flex;
+  background-color: #2f948d;
+  justify-content: space-between;
+}
+
+.nav-menu {
+  display: flex;
+  margin-right: 40px;
+  justify-content: center;
+  list-style: none;
+}
+
+.nav-menu-item {
+  display: flex;
+  list-style: none;
+  margin-right: 150px;
+  text-transform: uppercase;
+  width:max-content;
+}
+
+.nav-menu-item :hover {
+  background-color: #015d56;
+  transition: 0.9s;
+  padding: 5px;
+  border-radius: 2px;
+
+}
+
+.logo{
+  color: whitesmoke;
+  font-size: 35px;
+  padding: 0 80px;
+  font-weight: bold;
+}
+
+.nav-link{
+  color: white;
+  text-decoration: none;
+}

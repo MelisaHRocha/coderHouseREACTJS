@@ -1,8 +1,9 @@
+import '../App.css';
 
 function Bienvenida ({greeting}){
     return(
         <>
-            <h2>{greeting}</h2>
+            <div className='Intro'>{greeting}</div>
         </>
     )
 }

@@ -41,7 +41,7 @@ function NavBar(){
                         <img src="https://placeimg.com/80/80/people" />
                         </div>
                     </label>
-                    <ul tabIndex={0} className="menu menu-compact dropdown-content mt-3 p-2 shadow bg-base-100 rounded-box w-52">
+                    <ul tabIndex={0} className="menu menu-compact dropdown-content mt-3 p-2 shadow bg-base-100 rounded-box w-52" style={{color: 'black' }}>
                         <li>
                         <a className="justify-between">
                             Profile

@@ -4,8 +4,7 @@ import { FaHouseUser } from "react-icons/fa";
 function CardWidget(){
     return(
         <>
-             <li><FaHouseUser/>
-             </li>
+             <li><FaHouseUser/></li>
         </>
     )
 }

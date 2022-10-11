@@ -1,26 +1,26 @@
 
 import '../App.css';
 import CardWidget  from './CardWidget';
+import {Link} from "react-router-dom";
 
 function NavBar(){
     return(
         <>
             <div className="navbar bg-primary text-primary-content">
                 <div className="flex-1">
-                    <a className="btn btn-ghost normal-case text-xl">Hostel do Moro</a>
+                <Link to='/'className="btn btn-ghost normal-case text-xl">Hostel do Moro</Link>
                 </div>
                 <div className="flex-none">
                 <ul className="menu menu-horizontal p-0">               
-                    <li><a>Reservas</a></li>
+                    <li><Link to='/reservas'>Reservas</Link></li>
                     <li tabIndex={0}>
                         <a>
-                        Servicios
+                        Categoría
                         <svg className="fill-current" xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24"><path d="M7.41,8.58L12,13.17L16.59,8.58L18,10L12,16L6,10L7.41,8.58Z"/></svg>
                         </a>
                         <ul className="p-2 bg-primary text-primary-content">
-                        <li><a>Piscina</a></li>
-                        <li><a>Nature Views</a></li>
-                        <li><a>Galeria</a></li>                    
+                        <li><Link to='/category/1'>Compartido</Link></li>
+                        <li><Link to='/category/2'>Privadas</Link></li>                
                         </ul>
                     </li>
                     <li><a>Contacto</a></li>

@@ -14,8 +14,7 @@ const ItemListContainer = () => {
         if(itemId){
             getProductsFilter().then( response =>{setItems(response)})
         }else{
-        getProducts().then(response => setItems(response))}
-        
+        getProducts().then(response => setItems(response))}       
         
         },[itemId]);
 

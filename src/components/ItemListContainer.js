@@ -1,5 +1,6 @@
 import React,{ useState, useEffect } from "react";
 import { useParams } from "react-router-dom";
+import { CartProvider } from "../context/CartContext";
 import {products} from "./data/products"
 import ItemCard from "./ItemCard";
 
@@ -49,16 +50,16 @@ const ItemListContainer = () => {
    console.log('Items', items);
 
     return (
-        <>
-        <div className="p-4 flex justify-center ...">
-            <p className="Intro">Habitaciones</p>
+        <div>
+            <div className="p-4 flex justify-center ...">
+                <p className="Intro">Habitaciones</p>
+            </div>
+            <div className="flex justify-center ...">
+            <div className="grid grid-cols-3 gap-8">
+            {items.map(item =><ItemCard key={item.id} {...item}/>)}
+            </div>
+            </div>
         </div>
-        <div className="flex justify-center ...">
-        <div className="grid grid-cols-3 gap-8">
-        {items.map(item =><ItemCard key={item.id} {...item}/>)}
-        </div>
-        </div>
-        </>
-  )
+    )
 }
 export default ItemListContainer

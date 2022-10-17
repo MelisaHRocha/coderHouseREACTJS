@@ -1,6 +1,8 @@
 import { useState } from "react"
 import { Link } from "react-router-dom"
 import ItemCount from "./ItemCount"
+import {useContext} from "react"
+import {CartContext} from "../context/CartContext"
 
 const ItemDetail = ({item}) => {
 
@@ -9,11 +11,14 @@ const ItemDetail = ({item}) => {
   const stock=15;
   const initial=1;
 
+  const { addItem, itemsCart} = useContext( CartContext)
+
   const onAdd = (counter) =>{
       console.log('On add');
       setCantidad(counter)
       console.log("El counter enviado es: ", counter)
-
+      addItem(item.name,counter)
+      console.log(addItem, itemsCart)
   }
 
   console.log("La cantidad del estado es: ", cantidad)

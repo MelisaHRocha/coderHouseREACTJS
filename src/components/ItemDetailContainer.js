@@ -3,6 +3,8 @@ import { Link, useParams } from "react-router-dom"
 import { products } from "./data/products"
 import ItemCount from "./ItemCount"
 import ItemDetail from "./ItemDetail"
+import {useContext} from "react"
+import {cartContext} from "../context/CartContext"
 
 const ItemDetailContainer = () => {
 

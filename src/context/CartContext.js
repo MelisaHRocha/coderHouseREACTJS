@@ -5,7 +5,7 @@ const CartContext = createContext([])
 const CartProvider = ({children}) => {
 
     const [itemsCart,setItemsCart] = useState([])
-    const [total,setTotal] = useState(0)
+ //   const [total,setTotal] = useState(0)
 
     const addItem = (item,counter) => {
 
@@ -22,8 +22,8 @@ const CartProvider = ({children}) => {
     
     const getTotal = () => {
         const quantitys = itemsCart.map(ic => ic.quantity)
-        const tot = quantitys.reduce((total, cant) => total + cant, 0 )
-        setTotal(tot)
+        const total = quantitys.reduce((total, cant) => total + cant, 0 )
+        return total
     }
 
 
@@ -37,7 +37,6 @@ const CartProvider = ({children}) => {
 
     const context = {
         itemsCart,
-        total,
         addItem,
         getTotal
     }

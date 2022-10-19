@@ -4,15 +4,8 @@ import {CartContext} from "../context/CartContext"
 
 function CardWidget(){
 
-    const { counter, getTotal, total } = useContext( CartContext);
+    const {  total } = useContext( CartContext);
 
- //   const [total, setTotal] = useState(0);
-
-    useEffect(() => {
-        getTotal();
-    }, [counter])
-
-    console.log("Que devuelve getTotal", getTotal)
 
 
 

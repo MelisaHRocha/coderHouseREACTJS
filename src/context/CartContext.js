@@ -20,8 +20,10 @@ const CartProvider = ({children}) => {
         }
     }
     
-    const getTotal = (counter) => {
-        setTotal(total +  counter)
+    const getTotal = () => {
+        const quantitys = itemsCart.map(ic => ic.quantity)
+        const tot = quantitys.reduce((total, cant) => total + cant, 0 )
+        setTotal(tot)
     }
 
 

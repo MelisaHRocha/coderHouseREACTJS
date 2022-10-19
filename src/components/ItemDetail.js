@@ -17,9 +17,11 @@ const ItemDetail = ({item}) => {
       console.log('On add');
       setCantidad(counter)
       console.log("El counter enviado es: ", counter)
-      addItem(item.name,counter)
-      console.log(addItem, itemsCart)
+      addItem(item,Number(counter))
+      
   }
+  
+  console.log( "Dentro de ItemDetail",itemsCart )
 
   console.log("La cantidad del estado es: ", cantidad)
 

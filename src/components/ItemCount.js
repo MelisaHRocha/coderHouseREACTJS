@@ -4,7 +4,6 @@ const ItemCount = ({onAdd, stock, initial}) => {
  
     const [counter, setCounter] = useState(initial)
     
-
     useEffect( () =>{
         console.log('se montó el componente');
     },[])
@@ -12,8 +11,6 @@ const ItemCount = ({onAdd, stock, initial}) => {
 
     const clickHandlerInc = () =>{
         console.log('Incrementaste');
-        console.log('counter', +counter);
-        console.log('Stock', +stock);
         (counter < stock) && (setCounter(counter +1))
 
     }

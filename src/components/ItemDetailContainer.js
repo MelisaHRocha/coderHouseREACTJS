@@ -4,13 +4,13 @@ import { products } from "./data/products"
 import ItemCount from "./ItemCount"
 import ItemDetail from "./ItemDetail"
 import {useContext} from "react"
-import {cartContext} from "../context/CartContext"
+import {CartContext} from "../context/CartContext"
 
 const ItemDetailContainer = () => {
 
     const {id : itemId} = useParams()
     const [item,setItem] = useState({})
-
+   
     useEffect(() => {
        getItemDetail().then( response =>
         {
@@ -27,11 +27,8 @@ const ItemDetailContainer = () => {
     }
     
 
-
   return (
-
-    <ItemDetail item={item}/>
-    
+    <ItemDetail item={item}/>   
   )
 }
 export default ItemDetailContainer

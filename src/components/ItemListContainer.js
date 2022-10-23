@@ -3,51 +3,64 @@ import { useParams } from "react-router-dom";
 import { CartProvider } from "../context/CartContext";
 import {products} from "./data/products"
 import ItemCard from "./ItemCard";
+import { collection, doc, getDoc, getDocs, getFirestore, query, where } from "firebase/firestore";
 
 const ItemListContainer = () => {
     
     const {id : itemId} = useParams()
     const [items, setItems] = useState([])
 
-    console.log('ItemId es', itemId)
-
     useEffect(()=>{
         if(itemId){
             getProductsFilter().then( response =>{setItems(response)})
         }else{
-        getProducts().then(response => setItems(response))}       
-        
+//        getProducts().then(response => setItems(response))}       
+          getItems()}    
         },[itemId]);
 
 
-     const getProducts = () => {
+ /*   const getProducts = () => {
         return  new Promise((resolve,reject)=>{
-                if( typeof itemId == "undefined"){               
-                    resolve(products)
-                    console.log('Productos NO  Filtrados', products)                   
-                }               
-               else{
-                    reject(products)
-                }       
+            if( typeof itemId == "undefined"){               
+                resolve(products)
+                console.log('Productos NO  Filtrados', products)                   
+            }               
+            else{
+                reject(products)
+            }       
       })
-     }
+    }*/
+
+
+    const getItems = () => { 
+        const db = getFirestore()
+        const itemsRef = collection(db, 'items')
+        if( typeof itemId == "undefined"){ 
+
+            getDocs(itemsRef).then( res => {
+                console.log(res);
+                const data = res.docs.map(e => ({id: e.id, ...e.data()}))
+     //               console.log(data);
+                    setItems(data)
+            });
+
+            }
+      
+    }
+
+    console.log("Items", items)
 
      const getProductsFilter = () => {
         return  new Promise((resolve,reject)=>{
-                if( typeof itemId !== "undefined"){               
-                    resolve(products.filter(p => p.categoryId == Number(itemId)))
-                    console.log('Productos Filtrados', products)                  
-                }              
-               else{
-                    reject(products)
-                  
-                }       
+            if( typeof itemId !== "undefined"){               
+                resolve(products.filter(p => p.categoryId == Number(itemId)))
+                console.log('Productos Filtrados', products)                  
+            }              
+            else{
+                reject(products)                
+            }       
       })
      }
-
-  
-   console.log('Productos Filtrados Saliendo    ', products);
-   console.log('Items', items);
 
     return (
         <div>

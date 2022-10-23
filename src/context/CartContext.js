@@ -4,7 +4,7 @@ const CartContext = createContext([])
 
 const CartProvider = ({children}) => {
 
-    const [itemsCart,setItemsCart] = useState([])
+    const [itemsCart, setItemsCart] = useState([])
  //   const [total,setTotal] = useState(0)
 
     const addItem = (item,counter) => {
@@ -30,13 +30,12 @@ const CartProvider = ({children}) => {
     console.log( "Dentro de CartContext",itemsCart )
 
     const isInCart = (item) =>{
-
         return itemsCart.some(ic=>ic.name===item.name)
-
     }
 
     const context = {
         itemsCart,
+        setItemsCart,
         addItem,
         getTotal
     }

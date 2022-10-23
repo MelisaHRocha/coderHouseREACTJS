@@ -6,6 +6,7 @@ import { BrowserRouter, Route, Routes } from 'react-router-dom';
 import ItemDetailContainer from './components/ItemDetailContainer';
 import Cart from './components/Cart';
 import { CartProvider } from './context/CartContext';
+import ListContainer from './components/firebase-example/ListContainer';
 
 function App() {
   return (
@@ -14,6 +15,7 @@ function App() {
     <BrowserRouter>
     <NavBar/>
     <Routes>
+    <Route path={'/firebase'} element={<ListContainer/>}/>
     <Route path={'/'} element={<ItemListContainer/>}></Route>
     <Route path={'/category/:id'} element={<ItemListContainer/>}></Route>
     <Route path={'/item/:id'} element={<ItemDetailContainer/>}></Route>

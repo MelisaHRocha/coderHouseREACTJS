@@ -11,6 +11,19 @@ const Cart = () => {
     setItemsCart(itemsCart => itemsCart.splice(0,itemsCart.legth - 1) )
   }
 
+  const limpiarReserva = (item) =>{
+    console.log("Entre a limpiar Reserva")
+    console.log("items", itemsCart)
+    const itemsCartEl = itemsCart.splice(itemsCart.indexOf(item),1)
+ //   setItemsCart(itemsCart => itemsCart.splice(itemsCart.indexOf(item),1) )
+
+    setItemsCart(itemsCartEl)
+    console.log("los items", itemsCart)
+    console.log("el item es", item)
+//  console.log("el indexOf es", itemsCart.indexOf(item))
+    console.log("items", itemsCart)
+  }
+
 
   return (
     <>
@@ -18,11 +31,6 @@ const Cart = () => {
           <table className="table w-full">
             <thead>
               <tr>
-                <th>
-                  <label>
-                    <input type="checkbox" className="checkbox" />
-                  </label>
-                </th>
                 <th>Producto</th>
                 <th>Precio</th>
                 <th>Cantidad</th>
@@ -35,12 +43,7 @@ const Cart = () => {
                 {itemsCart.map((item) => {  
                 return (
 
-                <tr key={item.id} >
-                  <th>
-                    <label>
-                      <input type="checkbox" className="checkbox" />
-                    </label>
-                  </th>
+                <tr key={item.id} >             
                   <td>
                     <div className="flex items-center space-x-3">
                       <div className="avatar">
@@ -50,7 +53,6 @@ const Cart = () => {
                       </div>
                       <div>
                         <div className="font-bold">{item.name}</div>
-                        <div className="text-sm opacity-50">United States</div>
                       </div>
                     </div>
                   </td>
@@ -60,14 +62,11 @@ const Cart = () => {
                   <td><p>{item.quantity}</p></td>
                   <td><p>$ {item.price*item.quantity}</p></td>
                   <th>
-                    <button className="btn btn-ghost btn-xxl"> <IoTrashSharp /></button>
+                    <button onClick={()=>limpiarReserva(item)} className="btn btn-ghost btn-xxl"> <IoTrashSharp /></button>
                   </th>
-                </tr>
-     
+                </tr>   
                 );
                 })} 
-
-
             </tbody>          
           </table>
         </div>

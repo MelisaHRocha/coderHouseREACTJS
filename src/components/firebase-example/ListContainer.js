@@ -24,7 +24,7 @@ const ListContainer = () => {
         getDocs(itemsRef).then( res => {
             console.log(res);
             const data = res.docs.map(e => ({id: e.id, ...e.data()}))
- //               console.log(data);
+ //             console.log(data);
                 setItems(data)
             });
     }

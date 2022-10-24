@@ -13,7 +13,7 @@ const ItemDetailContainer = () => {
     const [item,setItem] = useState({})
    
 /*    useEffect(() => {
-       getItemDetail().then( response =>
+       getItemDetailOld().then( response =>
         {
             setItem(response)
             console.log(response)
@@ -23,51 +23,27 @@ const ItemDetailContainer = () => {
 
 
     useEffect(() => {
-      getItemDetailF()
+      getItemDetail()
    }, [])
 
-    const getItemDetail = () => {
+    const getItemDetailOld = () => {
         return new Promise((resolve)=>{
                 resolve( products.find(p => p.id === Number(itemId)))
-//                console.log("Entonces p", p.id)
                 console.log("Entonces itemID", itemId)
         })
     }
     
 
-    const getItemDetailF = () =>{
+    const getItemDetail = () =>{
       const db = getFirestore()
-      const itemsRef = collection(db, 'items')
-      const docRef = doc(db,'items','IuinnxtMLJzzAE6PnTyJ');
-      console.log("docRef", docRef.id)
-      getDoc(docRef).then( res => {
-        console.log("Entre a la query");
-        console.log("Esto es resdocs",res.doc);
-        const data = res.doc
-        
-            console.table(data);
-          
-    });
-
-
-      const q =  query(itemsRef, where('id','!=','Room 1'))
-      console.log("Esto es ref ", itemsRef)
-      console.log("Esto es q", q )
-      getDocs(q).then( res => {
-          console.log("Entre a la query");
-          console.log("Esto es resdocs",res.docs);
-          const data = res.docs.map(e => ({id: e.id, ...e.data()}))
+      const queryRef = doc(db, "items", itemId);
+      getDoc(queryRef).then( res => {
+          const data = {id: res.id, ...res.data()}
               console.table(data);
               setItem(data)
       });
     }
     
-
-    const db = getFirestore()
-      const itemsRef = collection(db, 'items')
-    console.log("Entonces itemsRef", itemsRef)
-    console.log("Entonces itemId",itemId)
-
   return (
     <ItemDetail item={item}/>   
   )

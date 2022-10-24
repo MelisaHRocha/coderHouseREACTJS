@@ -1,4 +1,4 @@
-import { createContext, useState } from "react";
+import { createContext, useState, useEffect } from "react";
 
 const CartContext = createContext([])
 
@@ -6,6 +6,17 @@ const CartProvider = ({children}) => {
 
     const [itemsCart, setItemsCart] = useState([])
  //   const [total,setTotal] = useState(0)
+ 
+    const {loadingItems, setLoading} = useState(true) 
+
+    useEffect(() => {
+      if(getTotal<1) {
+
+        setLoading(false)
+
+      }
+    
+    }, [])
 
     const addItem = (item,counter) => {
 
@@ -37,6 +48,7 @@ const CartProvider = ({children}) => {
         itemsCart,
         setItemsCart,
         addItem,
+        loadingItems,
         getTotal
     }
 

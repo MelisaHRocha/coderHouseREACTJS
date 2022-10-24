@@ -3,7 +3,7 @@ import { useParams } from "react-router-dom";
 import { CartProvider } from "../context/CartContext";
 import {products} from "./data/products"
 import ItemCard from "./ItemCard";
-import { collection, doc, getDoc, getDocs, getFirestore, query, where } from "firebase/firestore";
+import { collection, doc, getDoc, getDocs, getFirestore, query, where, db } from "firebase/firestore";
 
 const ItemListContainer = () => {
     
@@ -12,7 +12,8 @@ const ItemListContainer = () => {
 
     useEffect(()=>{
         if(itemId){
-            getProductsFilter().then( response =>{setItems(response)})
+ //           getProductsFilter().then( response =>{setItems(response)})
+         getProductsFilter()
         }else{
 //        getProducts().then(response => setItems(response))}       
           getItems()}    
@@ -35,7 +36,7 @@ const ItemListContainer = () => {
     const getItems = () => { 
         const db = getFirestore()
         const itemsRef = collection(db, 'items')
-        if( typeof itemId == "undefined"){ 
+
 
             getDocs(itemsRef).then( res => {
                 console.log(res);
@@ -44,13 +45,12 @@ const ItemListContainer = () => {
                     setItems(data)
             });
 
-            }
       
     }
 
     console.log("Items", items)
 
-     const getProductsFilter = () => {
+     /*const getProductsFilter = () => {
         return  new Promise((resolve,reject)=>{
             if( typeof itemId !== "undefined"){               
                 resolve(products.filter(p => p.categoryId == Number(itemId)))
@@ -60,6 +60,20 @@ const ItemListContainer = () => {
                 reject(products)                
             }       
       })
+     } */
+    
+
+     const getProductsFilter = () => {
+        const db = getFirestore()
+        const itemsRef = collection(db, 'items')
+ //       console.log("Esto es ref ", itemsRef)
+        const q =  query(itemsRef, where('categoryId', '==', itemId))
+        getDocs(q).then( res => {
+            console.log(res);
+            const data = res.docs.map(e => ({id: e.id, ...e.data()}))
+                console.table(data);
+                setItems(data)
+        });
      }
 
     return (

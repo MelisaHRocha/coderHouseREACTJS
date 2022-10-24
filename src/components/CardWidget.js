@@ -7,6 +7,7 @@ function CardWidget(){
 
     const {getTotal} = useContext( CartContext);
 
+
     return(
         <>
             <label tabIndex={0} className="btn btn-ghost btn-circle">
@@ -15,7 +16,7 @@ function CardWidget(){
                 <span className="badge badge-sm indicator-item">{getTotal()}</span>
                 </div>
             </label>
-
+            {getTotal()>0 ? 
             <div tabIndex={0} className="mt-3 card card-compact dropdown-content w-52 bg-base-100 shadow">
                 <div className="card-body">
                     <span className="font-bold text-lg" style={{color: 'black' }}>8 Items</span>
@@ -24,7 +25,15 @@ function CardWidget(){
                     <Link to='/cart'><button className="btn btn-primary btn-block">View cart</button></Link>
                     </div>
                 </div>
-            </div>
+            </div> 
+            : 
+            <div tabIndex={0} className="mt-3 card card-compact dropdown-content w-52 bg-base-100 shadow">
+                <div className="card-body">
+                    <span className="font-bold text-lg" style={{color: 'black' }}>Oops! Agrega productos para poder continuar</span>
+                    <span className="text-info">Carrito vacío</span>
+                </div>
+            </div> 
+            }
         </>
     )
 }

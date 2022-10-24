@@ -5,21 +5,8 @@ const CartContext = createContext([])
 const CartProvider = ({children}) => {
 
     const [itemsCart, setItemsCart] = useState([])
- //   const [total,setTotal] = useState(0)
  
-    const {loadingItems, setLoading} = useState(true) 
-
-    useEffect(() => {
-      if(getTotal<1) {
-
-        setLoading(false)
-
-      }
-    
-    }, [])
-
     const addItem = (item,counter) => {
-
         if (isInCart(item)){
             const itemEnc = itemsCart.find(ic=>ic.name===item.name)
             itemEnc.quantity += counter             
@@ -29,6 +16,15 @@ const CartProvider = ({children}) => {
             setItemsCart(
             itemsCart => itemsCart.concat(item))
         }
+    }
+
+    const limpiarReserva = (item) =>{        
+    const itemsCartRestantes = itemsCart.filter(it => it.id !== item.id)  
+    setItemsCart(itemsCartRestantes)
+    }
+
+    const limpiarReservas = () =>{               
+        setItemsCart([])
     }
     
     const getTotal = () => {
@@ -48,7 +44,8 @@ const CartProvider = ({children}) => {
         itemsCart,
         setItemsCart,
         addItem,
-        loadingItems,
+        limpiarReserva,
+        limpiarReservas,
         getTotal
     }
 

@@ -7,6 +7,7 @@ import {CartContext} from "../context/CartContext"
 const ItemDetail = ({item}) => {
 
   const [cantidad,setCantidad] = useState(0)
+  const [finalizar,setFinalizar] = useState(true)
 
   const stock=15;
   const initial=1;
@@ -18,8 +19,10 @@ const ItemDetail = ({item}) => {
       setCantidad(counter)
       console.log("El counter enviado es: ", counter)
       addItem(item,Number(counter))
-      
+      setFinalizar(false)
+      console.log("Esto es finalizar", finalizar)
   }
+
   
   console.log( "Dentro de ItemDetail",itemsCart )
 
@@ -35,8 +38,10 @@ const ItemDetail = ({item}) => {
         <div className="card-body">
           <h2 className="card-title">{item.name}</h2>
           <p>Precio: $ {item.price}</p>
-          <div><ItemCount onAdd={onAdd} stock={stock} initial={initial}/></div>         
-          <Link to='/' className="btn m-5 btn-secondary button-trn">Volver</Link>
+          {finalizar ?
+          <div><div><ItemCount onAdd={onAdd} finaliza={finalizar} stock={stock} initial={initial}/></div>         
+          <Link to='/' className="btn m-5 btn-secondary button-trn">Volver</Link></div>
+          : <Link to='/cart' className="btn m-5 btn-secondary button-trn">Finalizar</Link>}   
         </div>
       </div>
     </div>

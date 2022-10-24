@@ -5,25 +5,7 @@ import { IoTrashSharp } from "react-icons/io5";
 
 const Cart = () => {
 
-  const {itemsCart, setItemsCart} = useContext( CartContext);
-
-  const limpiarReservas = () =>{
-    setItemsCart(itemsCart => itemsCart.splice(0,itemsCart.legth - 1) )
-  }
-
-  const limpiarReserva = (item) =>{
-    console.log("Entre a limpiar Reserva")
-    console.log("items", itemsCart)
-    const itemsCartEl = itemsCart.splice(itemsCart.indexOf(item),1)
- //   setItemsCart(itemsCart => itemsCart.splice(itemsCart.indexOf(item),1) )
-
-    setItemsCart(itemsCartEl)
-    console.log("los items", itemsCart)
-    console.log("el item es", item)
-//  console.log("el indexOf es", itemsCart.indexOf(item))
-    console.log("items", itemsCart)
-  }
-
+  const {itemsCart, limpiarReserva, limpiarReservas} = useContext( CartContext);
 
   return (
     <>
@@ -38,11 +20,9 @@ const Cart = () => {
                 <th></th>
               </tr>
             </thead>
-            <tbody>
-         
+            <tbody>         
                 {itemsCart.map((item) => {  
                 return (
-
                 <tr key={item.id} >             
                   <td>
                     <div className="flex items-center space-x-3">
@@ -67,11 +47,12 @@ const Cart = () => {
                 </tr>   
                 );
                 })} 
+                <tr><td></td><td></td><td>
+                  <p>Cantidad de Reservas</p></td><td></td></tr>
             </tbody>          
           </table>
         </div>
-        <button onClick={limpiarReservas} className="btn m-3 btn-primary">LIMPIAR RESERVAS</button>          
-       
+        <button onClick={limpiarReservas} className="btn m-3 btn-primary">LIMPIAR RESERVAS</button>                
     </>
   )
 }

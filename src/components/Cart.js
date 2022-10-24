@@ -7,6 +7,13 @@ const Cart = () => {
 
   const {itemsCart, limpiarReserva, limpiarReservas} = useContext( CartContext);
 
+  const getTotal = () =>{
+    const subtotales = itemsCart.map(ic => ic.quantity*ic.price)
+    const total = subtotales.reduce((total, cant) => total + cant, 0 )
+    return total
+         
+  }
+
   return (
     <>
         <div className="overflow-x-auto w-full">
@@ -48,7 +55,11 @@ const Cart = () => {
                 );
                 })} 
                 <tr><td></td><td></td><td>
-                  <p>Cantidad de Reservas</p></td><td></td></tr>
+                  <p>Cantidad de Reservas</p></td><td>{itemsCart.length}</td>
+                </tr>
+                <tr><td></td><td></td><td>
+                  <p>TOTAL</p></td><td>$ {getTotal()}</td>
+                </tr>
             </tbody>          
           </table>
         </div>

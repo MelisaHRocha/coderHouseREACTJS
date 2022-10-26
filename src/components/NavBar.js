@@ -26,8 +26,7 @@ function NavBar(){
                     <li><a>Contacto</a></li>
                     <li><a>Ubicacion</a></li>         
                     </ul>
-                    <div className="dropdown dropdown-end">
-                    
+                    <div className="dropdown dropdown-end">                    
                     <CardWidget></CardWidget>
                     </div>
                     <div className="dropdown dropdown-end">

@@ -41,7 +41,7 @@ const ItemDetail = ({item}) => {
           {finalizar ?
           <div><div><ItemCount onAdd={onAdd} finaliza={finalizar} stock={stock} initial={initial}/></div>         
           <Link to='/' className="btn m-5 btn-secondary button-trn">Volver</Link></div>
-          : <Link to='/cart' className="btn m-5 btn-secondary button-trn">Finalizar</Link>}   
+          : <Link to='/cart' className="btn m-5 btn-secondary button-trn">Finalizar Compra</Link>}   
         </div>
       </div>
     </div>

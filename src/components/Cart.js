@@ -14,6 +14,8 @@ const Cart = () => {
          
   }
 
+  console.log("itemsCart de Cart", itemsCart)
+
   return (
     <>
         <div className="overflow-x-auto w-full">

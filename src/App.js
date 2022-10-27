@@ -11,6 +11,8 @@ import DatePicker from './components/DatePicker';
 import DatePicker2 from './components/DatePicker2';
 import DatePicker3 from './components/DatePicker3';
 import Order from './components/Order';
+import UserForm from './components/UserForm';
+import UseForm2 from './components/UseFrom2';
 
 function App() {
   return (
@@ -28,6 +30,7 @@ function App() {
     <Route path={'/datepicker2'} element={<DatePicker2/>}></Route>
     <Route path={'/datepicker3'} element={<DatePicker3/>}></Route>   
     <Route path={'/order'} element={<Order/>}></Route>
+    <Route path={'/useform2'} element={<UseForm2/>}></Route>
     </Routes>  
     </BrowserRouter> 
     </CartProvider>  

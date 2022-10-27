@@ -1,10 +1,13 @@
 import { createContext, useState, useEffect } from "react";
+import Swal from 'sweetalert2'
 
 const CartContext = createContext([])
 
 const CartProvider = ({children}) => {
 
     const [itemsCart, setItemsCart] = useState([])
+    const [confirmCartDelate,setConfirmCartDelate] = useState(false)
+
  
     const addItem = (item,counter) => {
         if (isInCart(item)){
@@ -23,8 +26,32 @@ const CartProvider = ({children}) => {
     setItemsCart(itemsCartRestantes)
     }
 
-    const limpiarReservas = () =>{               
-        setItemsCart([])
+    const limpiarReservas = () =>{    
+        Swal.fire({
+            title: 'Vaciar carrito',
+            text: "Estás seguro de que desea vaciar tu carrito?",
+            icon: 'warning',
+            showCancelButton: true,
+            confirmButtonColor: '#3085d6',
+            cancelButtonColor: '#d33',
+            confirmButtonText: 'Yes, delete it!'
+          }).then((result) => {
+            if (result.isConfirmed) {
+              Swal.fire(
+                'Deleted!',
+                'Vació su carrito, continue con otra reserva',
+                'success'
+                ).then((result)=>{
+                    if(result.isConfirmed){
+                        setItemsCart([])
+                        setConfirmCartDelate(true)
+
+                    }
+                })             
+                
+                console.log("Confirm cart Delate",confirmCartDelate)
+            }
+          })
     }
     
     const getTotal = () => {
@@ -46,6 +73,7 @@ const CartProvider = ({children}) => {
         addItem,
         limpiarReserva,
         limpiarReservas,
+        confirmCartDelate,
         getTotal
     }
 

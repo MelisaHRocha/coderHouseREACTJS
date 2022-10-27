@@ -2,10 +2,14 @@ import {useContext} from "react"
 import {CartContext} from "../context/CartContext"
 import { Link } from 'react-router-dom';
 import { IoTrashSharp } from "react-icons/io5";
+import { MdDeleteForever } from "react-icons/md";
+import { useNavigate } from "react-router-dom";
+
 
 const Cart = () => {
 
-  const {itemsCart, limpiarReserva, limpiarReservas} = useContext( CartContext);
+  const {itemsCart, limpiarReserva, limpiarReservas, confirmCartDelate} = useContext( CartContext);
+  const navigate = useNavigate();
 
   const getTotal = () =>{
     const subtotales = itemsCart.map(ic => ic.quantity*ic.price)
@@ -18,12 +22,13 @@ const Cart = () => {
 
   return (
     <>
+    <div className="p-6 flex justify-center ..."><h2 className="card-title">Carrito</h2></div>
         <div className="overflow-x-auto w-full">
           <table className="table w-full">
             <thead>
               <tr>
                 <th>Producto</th>
-                <th>Precio</th>
+                <th>Precio por Noche</th>
                 <th>Cantidad</th>
                 <th>Subtotal</th>
                 <th></th>
@@ -51,7 +56,7 @@ const Cart = () => {
                   <td><p>{item.quantity}</p></td>
                   <td><p>$ {item.price*item.quantity}</p></td>
                   <th>
-                    <button onClick={()=>limpiarReserva(item)} className="btn btn-ghost btn-xxl"> <IoTrashSharp /></button>
+                    <button onClick={()=>limpiarReserva(item)} className="btn btn-ghost btn-xxl"> <IoTrashSharp style={{color: 'green', fontSize: '20px'}}/></button>
                   </th>
                 </tr>   
                 );
@@ -62,10 +67,20 @@ const Cart = () => {
                 <tr><td></td><td></td><td>
                   <p>TOTAL</p></td><td>$ {getTotal()}</td>
                 </tr>
+                <tr><td>
+                <div class="flex flex-row ...">
+                    <div><button onClick={limpiarReservas}><MdDeleteForever style={{color: 'green', fontSize: '25px'}}/></button></div>
+                    <div class="ml-2"><a style={{color: 'green', fontSize: '14px'}} onClick={limpiarReservas}>Limpiar Carrito</a></div>
+                    <div class="ml-16"><Link to='/' className="btn btn-wide">Seguir Reservando</Link></div>
+                </div></td>
+                <td></td>
+                <td>
+                {confirmCartDelate && navigate('/')}
+                <Link to='/order' className="btn btn-wide">CHECKOUT</Link></td>
+                </tr>
             </tbody>          
           </table>
-        </div>
-        <button onClick={limpiarReservas} className="btn m-3 btn-primary">LIMPIAR RESERVAS</button>                
+        </div>            
     </>
   )
 }

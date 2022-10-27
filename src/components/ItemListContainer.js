@@ -13,7 +13,7 @@ const ItemListContainer = () => {
 
     useEffect(()=>{
         if(itemId){
- //           getProductsFilter().then( response =>{setItems(response)})
+ //       getProductsFilter().then( response =>{setItems(response)})
          getProductsFilter()
         }else{
 //        getProducts().then(response => setItems(response))}       
@@ -76,13 +76,6 @@ const ItemListContainer = () => {
     return (
         <div>           
             <div className="carousel w-full">
-                <div id="slide1" className="carousel-item relative w-full">
-                    <img src="https://firebasestorage.googleapis.com/v0/b/react-hosteldomoro.appspot.com/o/Carrusel%2F1.png?alt=media&token=73e5dec6-e404-4c50-8e39-61e970dff19b" className="w-full" />
-                    <div className="absolute flex justify-between transform -translate-y-1/2 left-5 right-5 top-1/2">
-                    <a href="#slide4" className="btn btn-circle">❮</a> 
-                    <a href="#slide2" className="btn btn-circle">❯</a>
-                    </div>
-                </div> 
                 <div id="slide2" className="carousel-item relative w-full">
                     <img src="https://firebasestorage.googleapis.com/v0/b/react-hosteldomoro.appspot.com/o/Carrusel%2F4.png?alt=media&token=ef151c43-cfb0-40e6-8c10-345ec3beb408" className="w-full" />
                     <div className="absolute flex justify-between transform -translate-y-1/2 left-5 right-5 top-1/2">
@@ -111,7 +104,12 @@ const ItemListContainer = () => {
             <div className="flex justify-center ...">
             <div className="grid grid-cols-3 gap-8 pb-20">
             {items.map(item =><ItemCard key={item.id} {...item}/>)}
+            <div className="justify-center ...">
+                <p className="text-center text-gray-500 text-xs">
+                    &copy;2020 Acme Corp. All rights reserved.
+                </p>
             </div>
+            </div>          
             </div>
         </div>
     )

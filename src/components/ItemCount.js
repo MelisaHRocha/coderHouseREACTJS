@@ -25,7 +25,7 @@ const ItemCount = ({onAdd, stock, initial, finalizar}) => {
         <button onClick={clickHandlerInc} className="btn m-3 btn-primary">+</button>
         {counter}
         <button onClick={clickHandlerDec} className="btn m-3 btn-primary">-</button>
-        <button disabled={counter === 0} onClick={()=>{onAdd(counter)}} className="btn m-5 btn-primary button-trn">Agregar a Carrito</button>       
+        <button disabled={counter === 0} onClick={()=>{onAdd(counter)}} className="btn m-5 btn-primary button-trn">Reservar ahora</button>       
         </div>
     )
 }

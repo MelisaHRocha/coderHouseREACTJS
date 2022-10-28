@@ -8,21 +8,14 @@ import { useNavigate } from "react-router-dom";
 
 const Cart = () => {
 
-  const {itemsCart, limpiarReserva, limpiarReservas, confirmCartDelate} = useContext( CartContext);
+  const {itemsCart, limpiarReserva, limpiarReservas, confirmCartDelate, getCostoTotal} = useContext( CartContext);
   const navigate = useNavigate();
-
-  const getTotal = () =>{
-    const subtotales = itemsCart.map(ic => ic.quantity*ic.price)
-    const total = subtotales.reduce((total, cant) => total + cant, 0 )
-    return total
-         
-  }
 
   console.log("itemsCart de Cart", itemsCart)
 
   return (
     <>
-    <div className="p-6 flex justify-center ..."><h2 className="card-title">Carrito</h2></div>
+    <div className="p-4 flex justify-center ..."><h2 className="Intro">Carrito</h2></div>
         <div className="overflow-x-auto w-full">
           <table className="table w-full">
             <thead>
@@ -65,7 +58,7 @@ const Cart = () => {
                   <p>Cantidad de Reservas</p></td><td>{itemsCart.length}</td>
                 </tr>
                 <tr><td></td><td></td><td>
-                  <p>TOTAL</p></td><td>$ {getTotal()}</td>
+                  <p>TOTAL</p></td><td>$ {getCostoTotal()}</td>
                 </tr>
                 <tr><td>
                 <div class="flex flex-row ...">

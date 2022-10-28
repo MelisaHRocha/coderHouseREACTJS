@@ -4,73 +4,77 @@ import {useContext} from "react"
 import {CartContext} from "../context/CartContext"
 import UserForm from './UserForm'
 import Swal from 'sweetalert2'
+import PurchaseDetail from './PurchaseDetail'
+import { FcTodoList } from "react-icons/fc";
+
 
 
 const Order = () => {
 
-  const {itemsCart} = useContext(CartContext);
+  const {itemsCart, getCostoTotal} = useContext(CartContext);
   const [user, setUser] = useState({})
-//  const items = [ 'iPhone', 'Samsung', 'Motorola' ] // Vienen de useContext()
+  const [orderLoad, setOrderLoad] = useState(false)
+  const [id, setId] = useState('')
   
   console.log("itemsCart", itemsCart)  //aca llega vacio
 
-  const putOrder = () => {
- //   const user = {name: 'Luis x', phone: '564654', email:'luis@gmail.com'}
-
-    const order = {
-      buyer: user,
-      items: itemsCart,
-      total: 2
-    }
-
-    console.log(order);
+  const order = {
+    buyer: user,
+    items: itemsCart,
+    total: getCostoTotal()
+  }
   
-    const db = getFirestore()
+  const putOrder = () => {
 
+    const db = getFirestore()
+   
     const ordersCollection = collection(db, 'orders')
-    addDoc( ordersCollection, order ).then( ({id}) => {
-        console.log( id );
+    addDoc( ordersCollection, order ).then( res => {
+        console.log( res.id );
+        setId(res.id)
       //  alert( id )
     }) 
+
+    console.log("Order componente.", order);
 
     Swal.fire({
         icon: 'success',
         title: 'Compra Realizada!',
-        timer: 1500,
         text: 'Ya tiene su reserva confirmada.',
-        imageUrl: 'https://firebasestorage.googleapis.com/v0/b/react-hosteldomoro.appspot.com/o/compartido1.jpg?alt=media&token=ddbde122-0309-43e4-90ca-8ab7c32fe5c6',
-        imageWidth: 400,
-        imageHeight: 200,
-        imageAlt: 'Custom image',
-        showConfirmButton: false,
+      }).then((result)=>{
+        if (result.isConfirmed) {          
+           console.log("Entre aca purchase")        
+           setOrderLoad(true)          
+        }
       })
-
+      
     }
 
     console.log("itemsCart", itemsCart)
 
-    const modifyOrder= () => {
-    
+    const modifyOrder= () => {   
     const db = getFirestore()
     const ordersCollection = collection(db, 'orders')
     const orderDoc = doc (ordersCollection, 'MRWtnEFkMkEHCNhBKtna')
     updateDoc(orderDoc, {total:5})
-
     }
 
-   
-  return (
-    <div>
-      
-      <div className="p-4 flex justify-center ..."> 
-      <div className="card card-compact w-96 bg-base-100">
-        <div className="p-5"><h1 className='text-2xl'>Checkout</h1></div>
-        <div>{itemsCart.map((item, i)  => <li key={i}>{item.name}</li> )}</div>
-        <UserForm setUser={setUser} OnOrder={putOrder}/>
+    console.log("Id order", id)
+
+    return (
+      <div>     
+        <div className="p-6 flex justify-center ...">        
+        <div className="card card-compact w-96 bg-base-100">       
+          {orderLoad ? <PurchaseDetail order={order} idSeguimiento={id}/>  : <div> 
+          <div className="flex flex-col ...">          
+          <div className="ml-20 mt-15"><h1 className='Intro'>Checkout</h1></div> 
+          <div className="ml-15 mt-15" style={{color: 'green', fontSize: '14px'}}><h1>Complete sus datos personales para completar la reserva.</h1></div> 
+          </div>
+          <UserForm setUser={setUser} OnOrder={putOrder}/></div>}    
+        </div>
+        </div> 
       </div>
-      </div> 
-    </div>
-  )
+    )
 }
 
 export default Order

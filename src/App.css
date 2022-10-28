@@ -42,7 +42,15 @@
 .Intro{
   font-family: 'Courgette', cursive;
   color: rgb(11, 9, 9);
-  font-size: 35px;
+  font-size: 30px;
+  padding: 1%;
+}
+
+
+.Categoria{
+  font-family: 'Courgette', cursive;
+  color: rgb(11, 9, 9);
+  font-size: 22px;
   padding: 1%;
 }
 

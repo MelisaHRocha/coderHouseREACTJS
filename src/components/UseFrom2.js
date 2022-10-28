@@ -58,6 +58,20 @@ const UseForm2 = () => (
       )}
     </Formik>
 
+    <form>
+     <label htmlFor="name">Nombre completo</label>
+     <input id="name" type="text" />
+
+     <label htmlFor="mail">Correo electrónico</label>
+     <input id="mail" type="email" />
+
+     <label htmlFor="phone">Teléfono móvil</label>
+     <input id="phone" type="tel" placeholder="+34" />
+
+     <input type="submit" />
+   </form>
+   
+
     <div class="w-full max-w-xs">
     <form class="bg-white shadow-md rounded px-8 pt-6 pb-8 mb-4">
         <div class="mb-4">

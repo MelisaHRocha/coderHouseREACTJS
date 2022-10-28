@@ -45,7 +45,6 @@ const CartProvider = ({children}) => {
                     if(result.isConfirmed){
                         setItemsCart([])
                         setConfirmCartDelate(true)
-
                     }
                 })             
                 
@@ -59,7 +58,13 @@ const CartProvider = ({children}) => {
         const total = quantitys.reduce((total, cant) => total + cant, 0 )
         return total
     }
-
+   
+    const getCostoTotal = () =>{
+        const subtotales = itemsCart.map(ic => ic.quantity*ic.price)
+        const total = subtotales.reduce((total, cant) => total + cant, 0 )
+        return total
+             
+      }
 
     console.log( "Dentro de CartContext",itemsCart )
 
@@ -74,7 +79,8 @@ const CartProvider = ({children}) => {
         limpiarReserva,
         limpiarReservas,
         confirmCartDelate,
-        getTotal
+        getTotal,
+        getCostoTotal
     }
 
     return(

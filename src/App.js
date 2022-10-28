@@ -7,12 +7,14 @@ import ItemDetailContainer from './components/ItemDetailContainer';
 import Cart from './components/Cart';
 import { CartProvider } from './context/CartContext';
 import ListContainer from './components/firebase-example/ListContainer';
-import DatePicker from './components/DatePicker';
-import DatePicker2 from './components/DatePicker2';
-import DatePicker3 from './components/DatePicker3';
+import DatePicker from './components/DatePicker/DatePicker';
+import DatePicker2 from './components/DatePicker/DatePicker2';
+import DatePicker3 from './components/DatePicker/DatePicker3';
 import Order from './components/Order';
 import UserForm from './components/UserForm';
 import UseForm2 from './components/UseFrom2';
+import PurchaseDetail from './components/PurchaseDetail';
+import UseForm3 from './components/UseForm3';
 
 function App() {
   return (
@@ -31,6 +33,7 @@ function App() {
     <Route path={'/datepicker3'} element={<DatePicker3/>}></Route>   
     <Route path={'/order'} element={<Order/>}></Route>
     <Route path={'/useform2'} element={<UseForm2/>}></Route>
+    <Route path={'/purchaseDetail'} element={<PurchaseDetail/>}></Route>
     </Routes>  
     </BrowserRouter> 
     </CartProvider>  

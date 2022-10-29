@@ -1,11 +1,12 @@
 import { createContext, useState, useEffect } from "react";
 import Swal from 'sweetalert2'
+import useLocalStorage from "../hooks/useLocalStorage";
 
 const CartContext = createContext([])
 
 const CartProvider = ({children}) => {
 
-    const [itemsCart, setItemsCart] = useState([])
+    const [itemsCart, setItemsCart] = useLocalStorage('itemsCart',[])
     const [confirmCartDelate,setConfirmCartDelate] = useState(false)
 
  

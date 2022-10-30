@@ -1,6 +1,7 @@
 @import url('https://fonts.googleapis.com/css2?family=Courgette&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Courgette&family=DM+Serif+Display&display=swap');
-
+@import url('https://fonts.googleapis.com/css2?family=Courgette&family=DM+Serif+Display&family=Noto+Sans+Symbols:wght@300;400&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Courgette&family=DM+Serif+Display&family=Noto+Sans+Symbols:wght@300;400&family=Nunito+Sans:wght@200&display=swap');
 .App {
   text-align: center;
 }
@@ -47,7 +48,6 @@
   padding: 1%;
 }
 
-
 .Categoria{ 
   font-family: 'DM Serif Display', serif;
   color: rgb(11, 9, 9);
@@ -68,3 +68,20 @@
   text-align: center;
 }
 
+.button-custom {
+  background-color:#b2c8df;
+  border: #90a7c4;
+  color:rgb(56, 45, 45);
+}
+
+.button-fondo{
+  background-color:#1f4b8e;
+
+}
+
+
+.detalle{
+  font-family: 'Nunito Sans', sans-serif;
+  color: rgb(11, 9, 9);
+  font-size: 18px;
+}

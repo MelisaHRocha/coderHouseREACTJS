@@ -44,7 +44,7 @@ const ItemDetail = ({item}) => {
         <figure><img src={item.img} alt="Room" /></figure>
         <div className="card-body">
           <h2 className="card-title">{item.name}</h2>
-          <p >Precio x noche: $ {item.price}</p>
+          <p >Precio x noche: <strong>$ {item.price}</strong></p>
           <div class="flex flex-row ...">
             <div><FaWifi style={{color: 'green', fontSize: '20px'}}/></div>
             <div class="ml-2"><a style={{color: 'green', fontSize: '12px'}}>WiFi gratis</a></div>
@@ -64,7 +64,7 @@ const ItemDetail = ({item}) => {
           {finalizar ?
           <div><div><ItemCount onAdd={onAdd} finaliza={finalizar} stock={stock} initial={initial}/></div>         
           <Link to='/' className="btn m-5 btn-secondary button-trn"><ImArrowLeft2/></Link></div>
-          : <Link to='/cart' className="btn m-5 btn-secondary button-trn">Finalizar Compra</Link>}   
+          : <Link to='/cart' className="btn m-5 btn-secondary button-trn button-custom">Finalizar Compra</Link>}   
         </div>
       </div>
     </div>

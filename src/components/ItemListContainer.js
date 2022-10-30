@@ -43,8 +43,6 @@ const ItemListContainer = () => {
             });     
     }
 
-    const getItemsCarrusel = () => {
-    }
 
     console.log("Items", items)
 

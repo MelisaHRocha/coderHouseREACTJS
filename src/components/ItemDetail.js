@@ -40,7 +40,7 @@ const ItemDetail = ({item}) => {
     <div className="p-6 flex justify-center ...">
     <div className="m-5">  
     <div className="p-5"><p className="card-title">Detalle de Habitación</p></div>
-    <div className="card lg:card-side bg-base-120 shadow-xl">
+    <div className="card card-compact w-96 bg-base-100 shadow-xl">
         <figure><img src={item.img} alt="Room" /></figure>
         <div className="card-body">
           <h2 className="card-title">{item.name}</h2>

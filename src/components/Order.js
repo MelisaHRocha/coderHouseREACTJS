@@ -5,9 +5,6 @@ import {CartContext} from "../context/CartContext"
 import UserForm from './UserForm'
 import Swal from 'sweetalert2'
 import PurchaseDetail from './PurchaseDetail'
-import { FcTodoList } from "react-icons/fc";
-
-
 
 const Order = () => {
 

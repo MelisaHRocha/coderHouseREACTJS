@@ -16,7 +16,6 @@ const Home = () => {
   Swal.fire({
     title: 'Ya elegiste tu fecha de reserva. Deseas cambiarla?',
     showDenyButton: true,
-    showCancelButton: true,
     confirmButtonText: 'Si, cambiar fechas de reserva.',
     denyButtonText: `No`,
   }).then((result) => {

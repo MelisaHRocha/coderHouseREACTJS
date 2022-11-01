@@ -16,7 +16,6 @@ const ItemDetail = ({item}) => {
   const [cantidad,setCantidad] = useState(0)
   const [finalizar,setFinalizar] = useState(true)
 
-  const stock=15;
   const initial=1;
 
   const { addItem, itemsCart} = useContext( CartContext)
@@ -62,7 +61,7 @@ const ItemDetail = ({item}) => {
             <div class="ml-2"><a style={{color: 'green', fontSize: '12px'}}>Jardín</a></div>          
           </div>
           {finalizar ?
-          <div><div><ItemCount onAdd={onAdd} finaliza={finalizar} stock={stock} initial={initial}/></div>         
+          <div><div><ItemCount onAdd={onAdd} item={item} finaliza={finalizar} initial={initial}/></div>         
           <Link to='/' className="btn m-5 btn-secondary button-trn"><ImArrowLeft2/></Link></div>
           : <Link to='/cart' className="btn m-5 btn-secondary button-trn button-custom">Finalizar Compra</Link>}   
         </div>

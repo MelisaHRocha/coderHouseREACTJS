@@ -15,10 +15,8 @@ const UserForm = ({setUser, OnOrder}) => {
        console.log("handleChange value", event.target.value );
        console.log("handleChange name", event.target.name );
 
-       var fmail = document.getElementById("mail").value; 
-       
-       var fname = document.getElementById("name").value; 
-       
+       var fmail = document.getElementById("mail").value;  
+       var fname = document.getElementById("name").value;       
        var fapellido = document.getElementById("apellido").value; 
 
        if (fmail.match(/^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/)) {
@@ -69,8 +67,7 @@ const UserForm = ({setUser, OnOrder}) => {
         <input id="mail" type="email" onChange={updateUser} name='email' className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"   placeholder="Email"/>
         </div>
     </form>
-        <button  type="submit"  name='submit' onClick={handleChange} className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline">Finalizar Compra
-        </button>
+        <button  type="submit"  name='submit' onClick={handleChange} className=" button-custom text-white py-3 px-4  focus:outline-none focus:shadow-outline" style={{fontSize:'16px'}}>Finalizar Compra</button>
     </div>
 
     </>

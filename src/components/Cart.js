@@ -8,7 +8,7 @@ import { useNavigate } from "react-router-dom";
 
 const Cart = () => {
 
-  const {itemsCart, limpiarReserva, limpiarReservas, confirmCartDelate, getCostoTotal} = useContext( CartContext);
+  const {itemsCart, limpiarReserva, limpiarReservas, confirmCartDelate, getCostoTotal, differenceInDays} = useContext( CartContext);
   const navigate = useNavigate();
 
   console.log("itemsCart de Cart", itemsCart)
@@ -22,7 +22,8 @@ const Cart = () => {
               <tr>
                 <th>Producto</th>
                 <th>Precio por Noche</th>
-                <th>Cantidad</th>
+                <th>Cantidad de Noches</th>
+                <th>Cantidad de Personas</th>
                 <th>Subtotal</th>
                 <th></th>
               </tr>
@@ -45,9 +46,10 @@ const Cart = () => {
                   </td>
                   <td>
                   <p>$ {item.price}</p>
-                  </td>
+                  </td>                 
+                  <td><p>{differenceInDays}</p></td>
                   <td><p>{item.quantity}</p></td>
-                  <td><p>$ {item.price*item.quantity}</p></td>
+                  <td><p>$ {item.price*item.quantity*item.diasReserva}</p></td>
                   <th>
                     <button onClick={()=>limpiarReserva(item)} className="btn btn-ghost btn-xxl"> <IoTrashSharp style={{color: 'green', fontSize: '20px'}}/></button>
                   </th>
@@ -64,7 +66,7 @@ const Cart = () => {
                 <div class="flex flex-row ...">
                     <div><button onClick={limpiarReservas}><MdDeleteForever style={{color: 'green', fontSize: '25px'}}/></button></div>
                     <div class="ml-2"><a style={{color: 'green', fontSize: '14px'}} onClick={limpiarReservas}>Limpiar Carrito</a></div>
-                    <div class="ml-16"><Link to='/' className="btn btn-wide">Seguir Reservando</Link></div>
+                    <div class="ml-16"><Link to='/itemListContainer' className="btn btn-wide">Seguir Reservando</Link></div>
                 </div></td>
                 <td></td>
                 <td>

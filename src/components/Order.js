@@ -8,7 +8,7 @@ import PurchaseDetail from './PurchaseDetail'
 
 const Order = () => {
 
-  const {itemsCart, getCostoTotal} = useContext(CartContext);
+  const {itemsCart, getCostoTotal, differenceInDays} = useContext(CartContext);
   const [user, setUser] = useState({})
   const [orderLoad, setOrderLoad] = useState(false)
   const [id, setId] = useState('')

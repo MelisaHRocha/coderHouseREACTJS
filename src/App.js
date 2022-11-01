@@ -15,6 +15,7 @@ import UserForm from './components/UserForm';
 import UseForm2 from './components/UseFrom2';
 import PurchaseDetail from './components/PurchaseDetail';
 import UseForm3 from './components/UseForm3';
+import Home from './components/Home';
 
 function App() {
   return (
@@ -24,7 +25,8 @@ function App() {
     <NavBar/>
     <Routes>
     <Route path={'/firebase'} element={<ListContainer/>}/>
-    <Route path={'/'} element={<ItemListContainer/>}></Route>
+    <Route path={'/'} element={<Home/>}></Route>
+    <Route path={'/itemListContainer'} element={<ItemListContainer/>}></Route>
     <Route path={'/category/:id'} element={<ItemListContainer/>}></Route>
     <Route path={'/item/:id'} element={<ItemDetailContainer/>}></Route>
     <Route path={'/cart'} element={<Cart/>}></Route>

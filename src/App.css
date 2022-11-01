@@ -71,14 +71,14 @@
 .button-custom {
   background-color:#b2c8df;
   border: #90a7c4;
-  color:rgb(56, 45, 45);
+  color:rgb(17, 11, 11);
 }
 
-.button-fondo{
-  background-color:#1f4b8e;
-
+.button-search{
+  background-color:#6dced5;
+  width: 230px;
+  height: 55px;
 }
-
 
 .detalle{
   font-family: 'Nunito Sans', sans-serif;

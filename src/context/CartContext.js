@@ -8,6 +8,8 @@ const CartProvider = ({children}) => {
 
     const [itemsCart, setItemsCart] = useLocalStorage('itemsCart',[])
     const [confirmCartDelate,setConfirmCartDelate] = useState(false)
+    const [differenceInDays, setDifferenceInDayas] = useState(0)
+    const [existeReserva, setExisteReserva] = useState(false)
 
  
     const addItem = (item,counter) => {
@@ -20,6 +22,16 @@ const CartProvider = ({children}) => {
             setItemsCart(
             itemsCart => itemsCart.concat(item))
         }
+
+        item.diasReserva = differenceInDays;
+        setExisteReserva(true)
+    }
+
+    const getDifferenceDays = (dateIn, dateOut) => {
+        var Difference_In_Time = dateOut.getTime() - dateIn.getTime();
+        var Difference_In_Days = Math.round(Difference_In_Time / (1000 * 3600 * 24));
+        setDifferenceInDayas(Difference_In_Days)
+        return Difference_In_Days
     }
 
     const limpiarReserva = (item) =>{        
@@ -46,6 +58,7 @@ const CartProvider = ({children}) => {
                     if(result.isConfirmed){
                         setItemsCart([])
                         setConfirmCartDelate(true)
+                        setExisteReserva(false)
                     }
                 })             
                 
@@ -61,7 +74,7 @@ const CartProvider = ({children}) => {
     }
    
     const getCostoTotal = () =>{
-        const subtotales = itemsCart.map(ic => ic.quantity*ic.price)
+        const subtotales = itemsCart.map(ic => ic.quantity*ic.price*ic.diasReserva)
         const total = subtotales.reduce((total, cant) => total + cant, 0 )
         return total
              
@@ -81,7 +94,11 @@ const CartProvider = ({children}) => {
         limpiarReservas,
         confirmCartDelate,
         getTotal,
-        getCostoTotal
+        getCostoTotal,
+        getDifferenceDays,
+        differenceInDays,
+        existeReserva,
+        setExisteReserva
     }
 
     return(

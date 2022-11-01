@@ -8,8 +8,6 @@ import { AdapterDayjs } from '@mui/x-date-pickers-pro/AdapterDayjs';
 
 const DatePicker3 = () => {
 
- 
-
     const handleSelect=(date)=>{
         console.log(date); // native Date object
       }
@@ -19,7 +17,6 @@ const DatePicker3 = () => {
         endDate: new Date(),
         key: 'selection',
       }
-
 
       const handleSelect2=(ranges)=>{
         console.log(ranges);

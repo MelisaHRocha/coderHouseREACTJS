@@ -5,12 +5,13 @@ import {useContext} from "react"
 
 const PurchaseDetail = ({order,idSeguimiento}) => {
 
-  const {setItemsCart} = useContext( CartContext);
+  const {setItemsCart, setExisteReserva} = useContext( CartContext);
 
   console.log("Order", {order},{idSeguimiento})
 
   const vaciarCarrito = () => {
     setItemsCart([])
+    setExisteReserva(false)
   }
   return (
     <>

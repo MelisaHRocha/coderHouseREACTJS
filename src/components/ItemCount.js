@@ -3,11 +3,6 @@ import {useEffect, useState} from "react";
 const ItemCount = ({onAdd, initial, item}) => {
  
     const [counter, setCounter] = useState(initial)
-    
-    useEffect( () =>{
-        console.log('se montó el componente');
-    },[])
-
 
     const clickHandlerInc = () =>{
         console.log('Incrementaste');

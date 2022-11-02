@@ -74,6 +74,12 @@
   color:rgb(17, 11, 11);
 }
 
+.button-checkout{
+  background-color:#6dced5;
+  width: 230px;
+  height: 200px;
+}
+
 .button-search{
   background-color:#6dced5;
   width: 230px;

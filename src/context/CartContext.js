@@ -30,6 +30,7 @@ const CartProvider = ({children}) => {
     const getDifferenceDays = (dateIn, dateOut) => {
         var Difference_In_Time = dateOut.getTime() - dateIn.getTime();
         var Difference_In_Days = Math.round(Difference_In_Time / (1000 * 3600 * 24));
+        Difference_In_Days == 0 && (Difference_In_Days = 1)
         setDifferenceInDayas(Difference_In_Days)
         return Difference_In_Days
     }

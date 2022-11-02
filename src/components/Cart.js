@@ -4,6 +4,7 @@ import { Link } from 'react-router-dom';
 import { IoTrashSharp } from "react-icons/io5";
 import { MdDeleteForever } from "react-icons/md";
 import { useNavigate } from "react-router-dom";
+import { ImArrowLeft2 } from "react-icons/im";
 
 
 const Cart = () => {
@@ -19,19 +20,19 @@ const Cart = () => {
         <div className="overflow-x-auto w-full">
           <table className="table w-full">
             <thead>
-              <tr>
+              <tr align="center">
                 <th>Producto</th>
                 <th>Precio por Noche</th>
                 <th>Cantidad de Noches</th>
                 <th>Cantidad de Personas</th>
                 <th>Subtotal</th>
-                <th></th>
+                <th>Eliminar Reserva</th>
               </tr>
             </thead>
             <tbody>         
                 {itemsCart.map((item) => {  
                 return (
-                <tr key={item.id} >             
+                <tr key={item.id} align="center">             
                   <td>
                     <div className="flex items-center space-x-3">
                       <div className="avatar">
@@ -56,25 +57,38 @@ const Cart = () => {
                 </tr>   
                 );
                 })} 
-                <tr><td></td><td></td><td>
-                  <p>Cantidad de Reservas</p></td><td>{itemsCart.length}</td>
-                </tr>
-                <tr><td></td><td></td><td>
-                  <p>TOTAL</p></td><td>$ {getCostoTotal()}</td>
-                </tr>
-                <tr><td>
-                <div class="flex flex-row ...">
-                    <div><button onClick={limpiarReservas}><MdDeleteForever style={{color: 'green', fontSize: '25px'}}/></button></div>
-                    <div class="ml-2"><a style={{color: 'green', fontSize: '14px'}} onClick={limpiarReservas}>Limpiar Carrito</a></div>
-                    <div class="ml-16"><Link to='/itemListContainer' className="btn btn-wide">Seguir Reservando</Link></div>
-                </div></td>
-                <td></td>
-                <td>
-                {confirmCartDelate && navigate('/')}
-                <Link to='/order' className="btn btn-wide">CHECKOUT</Link></td>
+                <tr><td></td><td></td><td></td>
+                  <td>
+                  <div class="flex flex-col ...">
+                    <div><p>Cantidad de Reservas</p></div>
+                    <div><p>TOTAL</p></div>
+                    <div></div>
+                  </div>
+                  </td>
+                  <td>
+                  <div class="flex flex-col ...">
+                    <div><p>{itemsCart.length}</p></div>
+                    <div><p>$ {getCostoTotal()}</p></div>
+                    <div></div>
+                  </div>
+                   </td>
                 </tr>
             </tbody>          
           </table>
+          <div className="p-4 flex justify-center ...">
+          <div class="flex flex-col ...">
+                <div class="flex flex-row ...">
+                    <div><button onClick={limpiarReservas}><MdDeleteForever style={{color: 'green', fontSize: '25px'}}/></button></div>
+                    <div class="ml-2"><a style={{color: 'green', fontSize: '14px'}} onClick={limpiarReservas}>Limpiar Carrito</a></div>
+                    <div  class="ml-16"><Link to='/order' className="btn btn-ghost  btn-wide button-trn button-custom">CHECKOUT</Link></div>
+                    {confirmCartDelate && navigate('/')}
+                </div>
+                <div class="ml-16"><Link to='/itemListContainer' className="btn m-5 btn-secondary button-trn"><ImArrowLeft2/></Link>Agrega mas Reservas</div>
+                </div>
+          </div>
+
+   
+
         </div>            
     </>
   )

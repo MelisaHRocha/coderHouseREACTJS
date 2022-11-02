@@ -20,7 +20,7 @@ const Home = () => {
     denyButtonText: `No`,
   }).then((result) => {
     if (result.isConfirmed) {
-      Swal.fire('Saved!', '', 'success').then((result)=>{
+      Swal.fire('Elige nuevas fechas de reserva!', '', 'success').then((result)=>{
         if(result.isConfirmed){
             setItemsCart([])
             setExisteReserva(false)           

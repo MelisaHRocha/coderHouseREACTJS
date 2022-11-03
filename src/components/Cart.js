@@ -83,7 +83,7 @@ const Cart = () => {
                     <div  class="ml-16"><Link to='/order' className="btn btn-ghost  btn-wide button-trn button-custom">CHECKOUT</Link></div>
                     {confirmCartDelate && navigate('/')}
                 </div>
-                <div class="ml-16"><Link to='/itemListContainer' className="btn m-5 btn-secondary button-trn"><ImArrowLeft2/></Link>Agrega mas Reservas</div>
+                <div class="ml-16"><Link to='/itemListContainer' className="btn m-5 btn-secondary button-trn"><ImArrowLeft2/></Link>Agregar mas Reservas</div>
                 </div>
           </div>
 

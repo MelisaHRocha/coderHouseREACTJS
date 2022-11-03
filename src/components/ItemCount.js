@@ -16,10 +16,10 @@ const ItemCount = ({onAdd, initial, item}) => {
 
     return (
         <div>
-        <button onClick={clickHandlerInc} className="btn m-3 btn-ghost button-custom">+</button>
+        <button onClick={clickHandlerInc} className="btn mx-3 btn-ghost button-custom">+</button>
         {counter}
-        <button onClick={clickHandlerDec} className="btn m-3 btn-ghost button-custom">-</button>
-        <button disabled={counter === 0} onClick={()=>{onAdd(counter)}} className="btn m-5 btn-ghost button-trn button-custom">Reservar ahora</button>       
+        <button onClick={clickHandlerDec} className="btn mx-3 btn-ghost button-custom-counter">-</button>
+        <button disabled={counter === 0} onClick={()=>{onAdd(counter)}} className="btn ml-6 btn-ghost button-trn button-custom">Reservar ahora</button>       
         </div>
     )
 }

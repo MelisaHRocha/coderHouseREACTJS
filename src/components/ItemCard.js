@@ -8,7 +8,7 @@ const ItemCard = ({id, name, img}) => {
         <div className="card-body">
           <h2 className="card-title detalle">{name}</h2>
           <div className="card-actions justify-end">
-            <button className="btn button-custom">Ver Detalle</button>
+            <button className="btn btn-ghost button-custom">Ver Detalle</button>
           </div>
         </div>
       </div>

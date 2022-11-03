@@ -22,7 +22,7 @@ function CardWidget(){
                     <span className="font-bold text-lg" style={{color: 'black', fontSize: '14px' }}>{itemsCart.length} habitación/es</span>
                     <span className="text-info">Subtotal: ${getCostoTotal()}</span>
                     <div className="card-actions">
-                    <Link to='/cart'><button className="btn btn-primary btn-block btn-xs">Ver Carrito</button></Link>
+                    <Link to='/cart'><button className="btn button-custom btn-ghost  btn-block btn-sm">Ver Carrito</button></Link>
                     </div>
                 </div>
             </div> 

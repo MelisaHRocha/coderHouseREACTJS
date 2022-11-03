@@ -37,8 +37,8 @@ const ItemDetail = ({item}) => {
   return (
     <>
     <div className="p-6 flex justify-center ...">
-    <div className="m-5">  
-    <div className="p-5"><p className="card-title">Detalle de Habitación</p></div>
+    <div className="mx-3">  
+    <div className="p-5"><p className="card-title ml-14">Detalle de Habitación</p></div>
     <div className="card card-compact w-96 bg-base-100 shadow-xl">
         <figure><img src={item.img} alt="Room" /></figure>
         <div className="card-body">
@@ -59,10 +59,11 @@ const ItemDetail = ({item}) => {
             <div class="ml-2"><a style={{color: 'green', fontSize: '12px'}}>Servicio de lavandería</a></div>
             <div class="ml-2"><FaTree style={{color: 'green', fontSize: '20px'}}/></div>
             <div class="ml-2"><a style={{color: 'green', fontSize: '12px'}}>Jardín</a></div>          
-          </div>
+          </div>         
+          <p className="mt-2">Agregar cantidad de huéspedes:</p>
           {finalizar ?
           <div><div><ItemCount onAdd={onAdd} item={item} finaliza={finalizar} initial={initial}/></div>         
-          <Link to='/' className="btn m-5 btn-secondary button-trn"><ImArrowLeft2/></Link></div>
+          <Link to='/' className="btn m-3  btn-secondary button-trn"><ImArrowLeft2/></Link></div>
           : <Link to='/cart' className="btn m-5 btn-secondary button-trn button-custom">Finalizar Compra</Link>}   
         </div>
       </div>
